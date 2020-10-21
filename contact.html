@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>About me</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1"> 
+        <link rel="stylesheet" href="contact.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+<body>
+    <div class="hey">
+    <div class="nav-bar">
+        <div class="nav-logo">
+            <img src="logo.jpg">
+        </div>
+        <div class="nav-links" id="nav-links">
+            <i class="fa fa-close" onclick="closeMenu()"></i>
+            <ul>
+                <a href="website.html"><li>HOME</li></a>
+                <a href="about.html"><li>ABOUT</li></a>
+                <a href="portfolio.html"><li>PORTFOLIO</li></a>
+            </ul>
+            <button type="button" class="btn" onclick="window.location.href = 'contact.html';">CONTACT</button>
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+    </div>
+    <div class="banner-title">
+        <h1><span>CONTACT</span><br></h1>
+        <h2>Email:anilcrest2400@gmail.com</h2><br>
+        <h2>Phone:9845508943</h2><br>
+        <h2>Address:Naya-Thimi,Bhaktapur</h2>   
+    </div> 
+    <div class="vertical-bar">
+        <div class="search-icon">
+            <i class="fa fa-th-list"></i>
+            <i class="fa fa-search"></i>
+        </div>
+        <div class="social-icons">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-pinterest"></i>
+        </div>
+    </div>
+    </div>
+    <script>
+        var show=document.getElementById("nav-links");
+        function showMenu(){
+            show.style.right="0";
+        }
+        function closeMenu(){
+            show.style.right="-200px";
+        }
+    </script>
+</body>    
+</html>
