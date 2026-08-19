@@ -4,50 +4,24 @@ import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Text } from "@/components/ui/text";
+import { ComicSectionHeader } from "@/components/ui/comic-section-header";
 import { experiences } from "@/data/portfolio";
 import { MapPin, Calendar, Building } from "lucide-react";
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="py-20 px-4 bg-muted/30">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Badge variant="default" className="mb-4">
-              Professional Journey
-            </Badge>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <Text variant="h2" className="mb-4" align="center">
-              Work Experience
-            </Text>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <Text variant="lead" className="max-w-2xl mx-auto" align="center">
-              My professional journey in software development, working with
-              diverse teams and technologies to deliver impactful solutions.
-            </Text>
-          </motion.div>
-        </div>
+    <section id="experience" className="relative overflow-hidden py-20 px-4">
+      <div className="absolute inset-0 bg-gradient-to-b from-spiderman-blue/5 via-muted/25 to-primary/5" />
+      <div className="relative z-10 max-w-4xl mx-auto">
+        <ComicSectionHeader
+          badge="Patrol Log"
+          title="Work Experience"
+          description="My professional journey in software development, working with diverse teams and technologies to deliver impactful solutions."
+        />
 
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border hidden md:block" />
+          <div className="absolute left-8 top-0 bottom-0 hidden w-0.5 bg-gradient-to-b from-spiderman-red via-spiderman-blue to-spiderman-red md:block" />
 
           <div className="space-y-12">
             {experiences.map((experience, index) => (
@@ -60,7 +34,7 @@ export function ExperienceSection() {
                 className="relative"
               >
                 {/* Timeline Dot */}
-                <div className="absolute left-6 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg hidden md:block" />
+                <div className="absolute left-6 hidden h-4 w-4 rounded-full border-4 border-background bg-primary shadow-[0_0_12px_color-mix(in_oklch,var(--spiderman-red)_55%,transparent)] md:block" />
 
                 <Card className="md:ml-16 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
                   <CardHeader>

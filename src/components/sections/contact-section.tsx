@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Text } from "@/components/ui/text";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ComicSectionHeader } from "@/components/ui/comic-section-header";
 import { contactInfo } from "@/data/portfolio";
 import {
   Mail,
@@ -160,41 +161,14 @@ export function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="py-20 px-4 bg-muted/30">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Badge variant="default" className="mb-4">
-              Get In Touch
-            </Badge>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <Text variant="h2" className="mb-4" align="center">
-              Let's Work Together
-            </Text>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <Text variant="lead" className="max-w-2xl mx-auto" align="center">
-              I'm always open to discussing new opportunities, interesting
-              projects, or just having a chat about technology and development.
-            </Text>
-          </motion.div>
-        </div>
+    <section id="contact" className="relative overflow-hidden py-20 px-4">
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-muted/20 to-spiderman-blue/10" />
+      <div className="relative z-10 max-w-6xl mx-auto">
+        <ComicSectionHeader
+          badge="Send a Signal"
+          title="Let's Team Up"
+          description="I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology and development."
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Contact Form */}

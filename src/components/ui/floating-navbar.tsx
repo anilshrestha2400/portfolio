@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Menu } from "lucide-react";
 import {
   Sheet,
@@ -13,6 +12,7 @@ import {
   SheetHeader,
 } from "@/components/ui/sheet";
 import { VisuallyHidden } from "@/components/ui/visually-hidden";
+import { SpiderEmblem } from "@/components/ui/spider-emblem";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -69,14 +69,25 @@ export function FloatingNavbar() {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-sm"
+          ? "bg-background/80 backdrop-blur-md border-b border-primary/25 shadow-[0_8px_30px_color-mix(in_oklch,var(--spiderman-red)_16%,transparent)]"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="font-bold text-xl text-primary">AS</div>
+          <button
+            type="button"
+            onClick={() => scrollToSection("#home")}
+            className="flex items-center gap-2 text-primary"
+          >
+            <SpiderEmblem className="h-7 w-7" />
+            <div className="flex flex-col items-start leading-none">
+              <span className="font-display text-2xl tracking-wide">AS</span>
+              <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                Vol. 1
+              </span>
+            </div>
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -96,7 +107,7 @@ export function FloatingNavbar() {
                 {activeSection === item.href.slice(1) && (
                   <motion.div
                     layoutId="activeSection"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-spiderman-red to-spiderman-blue"
                     initial={false}
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
@@ -105,9 +116,7 @@ export function FloatingNavbar() {
             ))}
           </div>
 
-          <div className="flex items-center space-x-4">
-            <ThemeToggle />
-
+          <div className="flex items-center">
             {/* Mobile Navigation */}
             <div className="md:hidden">
               <Sheet>

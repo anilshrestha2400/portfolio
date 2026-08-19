@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Text } from "@/components/ui/text";
-import { GraduationCap, Calendar, MapPin, Award } from "lucide-react";
+import { ComicSectionHeader } from "@/components/ui/comic-section-header";
+import { GraduationCap, Calendar, MapPin } from "lucide-react";
 
 const educationData = {
   degree: "Bachelor of Computer Application (BCA)",
@@ -27,40 +27,11 @@ export function EducationSection() {
   return (
     <section id="education" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Badge variant="default" className="mb-4">
-              Education
-            </Badge>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <Text variant="h2" className="mb-4" align="center">
-              Academic Foundation
-            </Text>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <Text variant="muted" className="max-w-2xl mx-auto" align="center">
-              Building a strong foundation in computer science and application
-              development through comprehensive academic training and practical
-              learning.
-            </Text>
-          </motion.div>
-        </div>
+        <ComicSectionHeader
+          badge="Training Grounds"
+          title="Academic Foundation"
+          description="Building a strong foundation in computer science and application development through comprehensive academic training and practical learning."
+        />
 
         <div className="grid grid-cols-1 gap-8">
           {/* Main Education Card */}

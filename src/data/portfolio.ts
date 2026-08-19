@@ -4,7 +4,7 @@ export const personalInfo: PersonalInfo = {
   name: "Anil Shrestha",
   title: "Full Stack Developer",
   bio: "Full Stack Developer with expertise in React.js, Next.js, Node.js, and TypeScript. I specialize in building responsive web applications and user-friendly interfaces.",
-  avatar: "/anil.jpg",
+  avatar: "/profile.png",
   resume: "/resume.pdf",
 };
 

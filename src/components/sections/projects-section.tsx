@@ -6,8 +6,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
+import { ComicSectionHeader } from "@/components/ui/comic-section-header";
 import { projects, contactInfo } from "@/data/portfolio";
-import { ExternalLink, Github, Eye } from "lucide-react";
+import { Github, Eye } from "lucide-react";
 import Image from "next/image";
 
 export function ProjectsSection() {
@@ -19,66 +20,37 @@ export function ProjectsSection() {
       : projects;
 
   return (
-    <section id="projects" className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Badge variant="default" className="mb-4">
-              Portfolio
-            </Badge>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <Text variant="h2" className="mb-4" align="center">
-              Featured Projects
-            </Text>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <Text variant="lead" className="max-w-2xl mx-auto" align="center">
-              A showcase of my recent work, featuring web applications built
-              with modern technologies and best practices in mind.
-            </Text>
-          </motion.div>
-        </div>
+    <section id="projects" className="relative overflow-hidden py-20 px-4">
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-spiderman-blue/5" />
+      <div className="relative z-10 mx-auto max-w-6xl">
+        <ComicSectionHeader
+          badge="Missions"
+          title="Featured Missions"
+          description="A showcase of my recent work — web applications built with modern technologies and best practices."
+        />
 
-        {/* Filter Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="flex justify-center gap-4 mb-12"
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mb-12 flex justify-center gap-4"
         >
           <Button
             variant={filter === "all" ? "default" : "outline"}
             onClick={() => setFilter("all")}
           >
-            All Projects ({projects.length})
+            All Missions ({projects.length})
           </Button>
           <Button
             variant={filter === "featured" ? "default" : "outline"}
             onClick={() => setFilter("featured")}
           >
-            Featured ({projects.filter((p) => p.featured).length})
+            Priority ({projects.filter((p) => p.featured).length})
           </Button>
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -86,55 +58,50 @@ export function ProjectsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
+              whileHover={{ y: -8, rotate: index % 2 === 0 ? 0.5 : -0.5 }}
               className="group"
             >
-              <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-lg p-0">
-                {/* Project Image */}
-                <div className="relative h-48 overflow-hidden bg-muted">
+              <Card className="mission-card h-full overflow-hidden p-0">
+                <div className="relative z-[2] h-48 overflow-hidden bg-muted">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
                   {project.featured && (
-                    <Badge className="absolute top-3 right-3 bg-primary">
-                      Featured
+                    <Badge className="absolute left-3 top-3 z-20 bg-primary font-display tracking-wide">
+                      PRIORITY
                     </Badge>
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
+                  <div className="absolute inset-0 flex items-center justify-center gap-2 bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     {project.liveUrl && (
-                      <Button
-                        size="sm"
-                        className="bg-white/20 backdrop-blur-sm border-white/30 text-white hover:bg-white/30"
-                        asChild
-                      >
+                      <Button size="sm" asChild>
                         <a
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-1"
+                          className="gap-1"
                         >
                           <Eye className="h-4 w-4" />
-                          Live Demo
+                          Deploy Site
                         </a>
                       </Button>
                     )}
                   </div>
                 </div>
 
-                <CardHeader className="p-0">
-                  <CardTitle className="flex items-center justify-between px-4 py-1">
-                    <span>{project.title}</span>
+                <CardHeader className="relative z-[2] p-0">
+                  <CardTitle className="px-4 py-2 font-heading text-lg">
+                    {project.title}
                   </CardTitle>
                 </CardHeader>
 
-                <CardContent className="px-4 pb-4 pt-0">
+                <CardContent className="relative z-[2] px-4 pb-4 pt-0">
                   <Text variant="muted" className="mb-4 line-clamp-3">
                     {project.longDescription}
                   </Text>
-
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech) => (
                       <Badge key={tech} variant="secondary" className="text-xs">
@@ -148,17 +115,14 @@ export function ProjectsSection() {
           ))}
         </div>
 
-        {/* More Projects CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 1.0 }}
-          className="mt-16 flex flex-wrap gap-4 !items-center w-full justify-center"
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-16 flex w-full flex-wrap items-center justify-center gap-4"
         >
-          <Text variant="muted" className="mb-4">
-            Want to see more of my work?
-          </Text>
+          <Text variant="muted">More missions in the archives?</Text>
           <Button variant="outline" size="lg" asChild>
             <a
               href={contactInfo.github}
@@ -167,7 +131,7 @@ export function ProjectsSection() {
               className="gap-2"
             >
               <Github className="h-4 w-4" />
-              View All Projects on GitHub
+              View GitHub Archives
             </a>
           </Button>
         </motion.div>

@@ -28,9 +28,9 @@ const textVariants = cva("text-foreground", {
 
       // Gradient text
       gradient:
-        "bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 bg-clip-text text-transparent font-bold",
+        "bg-gradient-to-r from-spiderman-red via-spiderman-blue to-spiderman-red bg-clip-text text-transparent font-bold",
       "gradient-muted":
-        "bg-gradient-to-r from-gray-600 to-gray-800 bg-clip-text text-transparent font-bold",
+        "bg-gradient-to-r from-spiderman-red to-spiderman-blue bg-clip-text text-transparent font-bold",
     },
     size: {
       xs: "text-xs",

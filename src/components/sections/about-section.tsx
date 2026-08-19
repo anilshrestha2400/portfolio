@@ -2,9 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Text } from "@/components/ui/text";
-import { personalInfo } from "@/data/portfolio";
+import { ComicSectionHeader } from "@/components/ui/comic-section-header";
 import { Code, Palette, Zap, Users } from "lucide-react";
 
 const highlights = [
@@ -36,43 +35,14 @@ const highlights = [
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-20 px-4 bg-muted/30">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Badge variant="default" className="mb-4">
-              About Me
-            </Badge>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <Text variant="h2" className="mb-4" align="center">
-              Passionate About Creating Digital Solutions
-            </Text>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <Text variant="muted" className="max-w-2xl mx-auto" align="center">
-              With a Bachelor's degree in Computer Applications and over 3 years
-              of professional experience in modern web technologies, I bring
-              both technical expertise and creative problem-solving to every
-              project I work on.
-            </Text>
-          </motion.div>
-        </div>
+    <section id="about" className="relative overflow-hidden py-20 px-4">
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-muted/20 to-spiderman-blue/5" />
+      <div className="relative z-10 max-w-6xl mx-auto">
+        <ComicSectionHeader
+          badge="Origin Story"
+          title="Passionate About Creating Digital Solutions"
+          description="With a Bachelor's degree in Computer Applications and over 3 years of professional experience in modern web technologies, I bring both technical expertise and creative problem-solving to every project I work on."
+        />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
           {/* Left Content */}
